@@ -31,14 +31,3 @@ def ocr_to_json(image_path: str, lang = str='eng') -> dict:
     return {'words': words}
     
 
-
-photoName = input("Enter png name you want to process: ")
-img = Image.open(photoName)
-
-file_name = img.filename
-file_name = file_name.split(".")[0]
-custom_config = r'--oem 3 --psm 6'
-text = pytesseract.image_to_string(img, config=custom_config)
-
-with open(f'{file_name}.txt', 'w') as text_file:
-    text_file.write(text)
